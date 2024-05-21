@@ -25,12 +25,57 @@
 		<button class="barreEdition-btn">publier les changements</button>
 		
 	</div>
+
+
+	<!--Modale 1 -->
+	<div class="modal-container">
+		<div class="modal-body">
+			<span class="modal-close"><i class="fa-solid fa-xmark"></i></span>
+			<h2 class="modal-title">Galerie photo</h2>
+			<div class="gallery2"></div>
+			<hr>
+			<button class="modal-ajout">Ajouter une photo</button>
+			<p class="modal-supp">Supprimer la galerie</p>
+		</div>
+	</div>
+	<!--Modale 2 -->
+
+	<div class="modal2-container">
+		<form id="modalForm"> 
+		  <div class="modal2-body">
+			<i id="precedent" class="fa-solid fa-arrow-left"></i>
+			<span class="modal2-close"><i class="fa-solid fa-xmark"></i></span>
+			<h2 class="modal2-title">Ajout photo</h2>
+			<div class="modal2-ajout-photo">
+			  <i id="icone_previsuel" class="fa-sharp fa-regular fa-image"></i>
+			  <img id="imagePreview" class="modal2NewImg" src="#" alt="Preview">
+			  <label for="image_uploads" class="btn-ajout-photo"> + Ajouter une photo</label>
+			  <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .png" multiple>
+			  <p>jpg, png: 4mo max</p>
+			</div>
+			<div class="modal2-titreEtCategorie">
+			  <label class="titre">Titre
+			  <input type="text" class="titreModal2" name="title">
+			</label>
+			  <label class="categories">Categories		
+			  <select name="liste-deroulante" class="categoriesModal2">
+			  </select>
+			</label>	
+			  <p class="error-title">Erreur: Veuillez saisir un titre (obligatoire)</p>
+			  <p class="error-log">Accès non autorisée.</p>
+			</div>
+			<button type="submit" class="modal2-valider" id="boutonValider">Valider</button> 
+		  </div>
+		</form>
+	  </div>
+	  
+	
 <header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
 			<li>projets</li>
-			<li>contact ></li>
+			<li>contact</li>
 			<li><a href="./login.html" class="login-link" id = "LoginStatus">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
@@ -40,61 +85,27 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
+			<button class="btn-modifier"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
 		</figure>
 		<article>
+			<button class="btn-modifier2"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
+			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux, et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+			<p>En cas de besoin, une équipe pluridisciplinaire peut être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
 	<section id="portfolio">
+		<div class="container-titre">
 		<h2>Mes Projets</h2>
+		<button class="modal-btn"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+		</div>
+
+
+		<div class="filter"></div>
+		<p class="filterActive"></p>
 		<div class="gallery">
-			<figure>
-				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-				<figcaption>Abajour Tahina</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-				<figcaption>Appartement Paris V</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-				<figcaption>Restaurant Sushisen - Londres</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-				<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-				<figcaption>Structures Thermopolis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-				<figcaption>Appartement Paris X</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-				<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-				<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-				<figcaption>Appartement Paris XVIII</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-				<figcaption>Bar “Lullaby” - Paris</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure>
+			
 		</div>
 	</section>
 	<section id="contact">
