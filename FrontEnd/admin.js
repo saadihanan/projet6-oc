@@ -20,17 +20,13 @@ function updateLogin() {
   //console.log(tokken);
   const boutonModifierModal = document.querySelector(".modal-btn");
   const barreEdition = document.querySelector(".barreEdition");
-  const boutonModifier2 = document.querySelector(".btn-modifier");
-  const boutonModif = document.querySelector(".btn-modifier2");
   const filter = document.querySelector(".filter");
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   if (isLoggedIn) {
     logStatus.innerHTML = "logout";
     boutonModifierModal.style.display = "block";
-    boutonModif.style.display = "block";
     barreEdition.style.display = "flex";
-    boutonModifier2.style.display = "block";
     filter.style.display = "none";
     //cliquer sur Logout pour se déconnecter//
     logStatus.addEventListener("click", () => {
@@ -40,9 +36,7 @@ function updateLogin() {
   } else {
     // Masquer les éléments lorsque la connexion échoue//
     boutonModifierModal.style.display = "none";
-    boutonModif.style.display = "none";
     barreEdition.style.display = "none";
-    boutonModifier2.style.display = "none";
     filter.style.display = "flex";
   }
 }
@@ -254,7 +248,7 @@ form.addEventListener("submit", (event) => {
   }
 });
 
-//FONCTION : Ajout d'une image//
+//FONCTION : Ajout d'une image //
 async function sendFormData(formData, token) {
   fetch("http://localhost:5678/api/works", {
     method: "POST",

@@ -242,6 +242,10 @@ footer nav ul {
   .footer-login li {
 	padding-right: 107px;
   }
+  .login-link, .nav-projets {
+	text-decoration: none;
+	color: black;
+  }
   /***CSS POUR LA CATEGORIE FILTRE***/
   .filter {
 	display: flex;
@@ -282,40 +286,6 @@ footer nav ul {
 	margin-bottom: 10px;
 	cursor: pointer;
   }
-  
-  /***Bouton modifier au niveau de l'article***/
-  
-  /* .btn-modifier2 {
-	border: transparent;
-	background: white;
-	font-family: "Work Sans";
-	font-size: 14px;
-	display: none;
-  }
-  .btn-modifier2 i {
-	margin-right: 13px;
-	font-size: 16px;
-  } */
-  
-  /***Bouton modifier au niveau de la photo ****/
-  
-  /* .btn-modifier {
-	margin-top: 15px;
-	border: none;
-	background: transparent;
-	font-family: "Work Sans";
-	font-style: normal;
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 16px;
-	margin-left: 57px;
-	display: none;
-  }
-  
-  .btn-modifier i {
-	margin-right: 13px;
-	font-size: 16px;
-  } */
   
   /***Bouton modifier pour ouvrir la modale***/
   .modal-btn {
