@@ -1,7 +1,7 @@
 const modal = document.querySelector(".modal-body");
 const closeModal = document.querySelector(".modal-close");
 const ajoutImg = document.querySelector(".modal-ajout");
-const suppImg = document.querySelector(".modal-supp");
+// const suppImg = document.querySelector(".modal-supp");
 const btnModal = document.querySelector(".modal-btn");
 const modal2 = document.querySelector(".modal2-body");
 const imageUpload = document.querySelector(".btn-ajout-photo");
@@ -155,19 +155,19 @@ async function displayModalImg(works) {
     });
 
     //// SUPPRIMER des deux galeries(index et modale)////
-    suppImg.addEventListener("click", (event) => {
-      event.preventDefault();
-      gallery2.innerHTML = "";
-      gallery.innerHTML = "";
-    });
-    const firstFigure = document.querySelector(".gallery2 figure:first-child");
-    if (firstFigure && !firstFigure.querySelector(".iconePosition")) {
-      const iconePosition = document.createElement("div");
-      iconePosition.innerHTML =
-        '<i class="fa-solid fa-arrows-up-down-left-right"></i>';
-      iconePosition.classList.add("iconePosition");
-      firstFigure.appendChild(iconePosition);
-    }
+    // suppImg.addEventListener("click", (event) => {
+    //   event.preventDefault();
+    //   gallery2.innerHTML = "";
+    //   gallery.innerHTML = "";
+    // });
+    // const firstFigure = document.querySelector(".gallery2 figure:first-child");
+    // if (firstFigure && !firstFigure.querySelector(".iconePosition")) {
+    //   const iconePosition = document.createElement("div");
+    //   iconePosition.innerHTML =
+    //     '<i class="fa-solid fa-arrows-up-down-left-right"></i>';
+    //   iconePosition.classList.add("iconePosition");
+    //   firstFigure.appendChild(iconePosition);
+    // }
 
     gallery2.appendChild(figureElement2);
     figureElement2.appendChild(workImg);
