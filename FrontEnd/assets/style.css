@@ -516,7 +516,9 @@ footer nav ul {
   
   .modal2NewImg {
 	width: 129px;
-	height: 193px;
+    height: 193px;
+    /* Ajout de margin-left pour centrer l'image */
+    margin-left: 140px;
   }
   
   .btn-ajout-photo {

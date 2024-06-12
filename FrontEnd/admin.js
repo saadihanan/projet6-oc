@@ -1,7 +1,6 @@
 const modal = document.querySelector(".modal-body");
 const closeModal = document.querySelector(".modal-close");
 const ajoutImg = document.querySelector(".modal-ajout");
-// const suppImg = document.querySelector(".modal-supp");
 const btnModal = document.querySelector(".modal-btn");
 const modal2 = document.querySelector(".modal2-body");
 const imageUpload = document.querySelector(".btn-ajout-photo");
@@ -15,9 +14,9 @@ const iconePrecedent = document.getElementById("precedent");
 //MODE ADMINISTRATEUR : Login OK//
 function updateLogin() {
   const logStatus = document.querySelector(".login-link");
-  //console.log(logStatus);
+ 
   const token = localStorage.getItem("token");
-  //console.log(tokken);
+
   const boutonModifierModal = document.querySelector(".modal-btn");
   const barreEdition = document.querySelector(".barreEdition");
   const filter = document.querySelector(".filter");
@@ -31,7 +30,7 @@ function updateLogin() {
     //cliquer sur Logout pour se déconnecter//
     logStatus.addEventListener("click", () => {
       localStorage.clear("token");
-      console.log("déconnecter");
+      
     });
   } else {
     // Masquer les éléments lorsque la connexion échoue//
@@ -52,8 +51,13 @@ function afficherPremiereModal() {
 function closePremiereModal() {
   overlayModal.style.display = "none";
   modal.style.display = "none";
-}
-btnModal.addEventListener("click", afficherPremiereModal); //Afficher
+};
+// Ajout d'un écouteur d'événement sur le bouton "Modifier"
+btnModal.addEventListener("click", () => {
+  afficherPremiereModal();
+  
+});
+//Afficher
 //Fermer la premiere modale (icone "close", clic exterieur)//
 closeModal.addEventListener("click", closePremiereModal);
 overlayModal.addEventListener("click", closePremiereModal);
@@ -87,17 +91,19 @@ iconePrecedent.addEventListener("click", () => {
   closeDeuxiemeModal();
   afficherPremiereModal();
 });
+  
+
 
 // MODALE 2 : menu déroulant : (categories) //
 function displayListeDeroulante(categories) {
-  //console.log(categories);
+ 
   const listeDeroulante = document.querySelector(".categoriesModal2");
-  //console.log(listeDeroulante);
+ 
   categories.forEach((category) => {
     const options = document.createElement("option");
     options.innerText = category.name;
     options.value = category.id;
-    // console.log(options);
+    
     listeDeroulante.appendChild(options);
   });
 }
@@ -121,7 +127,7 @@ async function displayModalImg(works) {
     //FONCTION : Suppression d'une image avec l'icone "cobeille" //
     async function deleteWorks(id) {
       const token = window.localStorage.getItem("token");
-      //console.log(token);
+     
 
       await fetch(`http://localhost:5678/api/works/${id}`, {
         method: "DELETE",
@@ -129,19 +135,8 @@ async function displayModalImg(works) {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((response) => {
-          if (response.ok) {
-            console.log("Suppression réussie");
-          } else if (response.status === 401) {
-            console.log("Unauthorized");
-          }
-        })
-        .catch((error) => {
-          console.log(
-            "Une erreur s'est produite lors de la suppression :",
-            error
-          );
-        });
+       
+
       const works = await getWorks();
       const categories = await getCategories();
       displayModalImg(works);
@@ -154,20 +149,7 @@ async function displayModalImg(works) {
       deleteWorks(id);
     });
 
-    //// SUPPRIMER des deux galeries(index et modale)////
-    // suppImg.addEventListener("click", (event) => {
-    //   event.preventDefault();
-    //   gallery2.innerHTML = "";
-    //   gallery.innerHTML = "";
-    // });
-    // const firstFigure = document.querySelector(".gallery2 figure:first-child");
-    // if (firstFigure && !firstFigure.querySelector(".iconePosition")) {
-    //   const iconePosition = document.createElement("div");
-    //   iconePosition.innerHTML =
-    //     '<i class="fa-solid fa-arrows-up-down-left-right"></i>';
-    //   iconePosition.classList.add("iconePosition");
-    //   firstFigure.appendChild(iconePosition);
-    // }
+   
 
     gallery2.appendChild(figureElement2);
     figureElement2.appendChild(workImg);
@@ -176,37 +158,19 @@ async function displayModalImg(works) {
   });
 }
 
+//PREVISUALISATION de l'image selectionnée//
+const iconePrevisuel = document.getElementById("icone_previsuel");
+const imgPrevisuel = document.getElementById("imagePreview");
+const btnPrevisuel = document.querySelector(".btn-ajout-photo");
+const paragrapnhe = document.querySelector(".modal2-ajout-photo p");
 const imageInput = document.getElementById("image_uploads");
 const titleInput = document.querySelector(".titreModal2");
 const categoryInput = document.querySelector(".categoriesModal2");
 const boutonValider = document.getElementById("boutonValider");
 const errorTitre = document.querySelector(".error-title");
 
-//console.log(imageInput);
-//console.log(titleInput);
-//console.log(categoryInput);
-//console.log(boutonValider);
-
-//CHANGEMENT de couleur du bouton "Valider"//
-function validationColor(event) {
-  event.preventDefault();
-  if (imageInput.files.length > 0 && titleInput.value.trim() !== "") {
-    boutonValider.style.background = "#1D6154";
-    boutonValider.style.color = "white";
-    errorTitre.style.display = "none";
-  } else {
-    errorTitre.style.display = "block";
-  }
-}
-
-imageInput.addEventListener("change", validationColor);
-
-//PREVISUALISATION de l'image selectionnée//
 imageInput.addEventListener("change", function () {
-  const iconePrevisuel = document.getElementById("icone_previsuel");
-  const imgPrevisuel = document.getElementById("imagePreview");
-  const btnPrevisuel = document.querySelector(".btn-ajout-photo");
-
+  
   const file = imageInput.files[0]; //recupère l'image selectionnée//
   if (file) {
     //VERIFICATION : si une image est selectionnée//
@@ -216,15 +180,36 @@ imageInput.addEventListener("change", function () {
       imgPrevisuel.src = event.target.result;
       imgPrevisuel.style.display = "flex";
       btnPrevisuel.style.display = "none";
+      paragrapnhe.style.display = "none";
+      boutonValider.style.background = "#1D6154";
+      boutonValider.style.color = "white";
     };
     reader.readAsDataURL(file);
-  } else {
-    imgPrevisuel.src = "#";
-    imgPrevisuel.style.display = "none";
-  }
+  } 
 });
 
-titleInput.addEventListener("input", validationColor);
+
+
+
+// Fonction pour réinitialiser les champs du formulaire
+function resetForm() {
+  // Réinitialiser le champ de l'image
+  imageInput.value = "";
+  // Réinitialiser le champ du titre
+  titleInput.value = "";
+  // Réinitialiser les styles de bouton "Valider"
+  boutonValider.style.background = "#a7a7a7";
+  boutonValider.style.color = "white";
+  // Cacher le message d'erreur pour le titre
+  errorTitre.style.display = "none";
+  // Réinitialiser l'image prévisualisée
+  imgPrevisuel.src = "";
+  imgPrevisuel.style.display = "none";
+  // Afficher l'icône pour la prévisualisation de l'image
+  iconePrevisuel.style.display = "block";
+  btnPrevisuel.style.display= "block";
+   
+};
 const form = document.getElementById("modalForm");
 
 form.addEventListener("submit", (event) => {
@@ -234,10 +219,6 @@ form.addEventListener("submit", (event) => {
   const title = titleInput.value.trim();
   const categoryId = categoryInput.value;
 
-  //console.log("image:", image);
-  // console.log("titre:", title);
-  //console.log("categories:", categoryId);
-
   const formData = new FormData();
   formData.append("image", image);
   formData.append("title", title);
@@ -245,10 +226,14 @@ form.addEventListener("submit", (event) => {
 
   if (image && title && categoryId) {
     sendFormData(formData, token);
+    resetForm(); // Réinitialiser les champs du formulaire après l'envoi des données
   }
+  else{errorTitre.style.display= "block"}
+  
 });
 
 //FONCTION : Ajout d'une image //
+// FONCTION : Ajout d'une image 
 async function sendFormData(formData, token) {
   fetch("http://localhost:5678/api/works", {
     method: "POST",
@@ -258,23 +243,19 @@ async function sendFormData(formData, token) {
     },
     body: formData,
   })
-    .then((response) => {
-      if (response.ok) {
-        console.log("Ajout réussi");
-      } else if (response.status === 401) {
-        console.log("Non autorisé");
-      }
-    })
-    .catch((error) => {
-      console.log("Une erreur s'est produite lors de l'ajout :", error);
-    });
+  .then(async (response) => {
+    if (response.ok) {
+      overlayModal2.style.display = "none";
 
-  const works = await getWorks();
-  displayModalImg(works);
-  displayWorks(works);
-}
+      // Mise à jour des galeries après ajout réussi
+      const works = await getWorks();
+      displayWorks(works);
+      displayModalImg(works);
+    }
+  }); // Ajout de la parenthèse fermante pour then
+} // Ajout de l'accolade fermante pour sendFormData
 
-//INITIALISATION de l'affichage (galerie et catégorie)//
+// INITIALISATION de l'affichage (galerie et catégorie)
 async function init() {
   const works = await getWorks();
   const categories = await getCategories();

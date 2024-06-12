@@ -1,7 +1,5 @@
 //Fonctions asynchrones de base pour effectuer des requêtes vers l'API//
 
-const baseUrl = "http://localhost:5678/api";
-
 async function getWorks() {
   const response = await fetch("http://localhost:5678/api/works");
   const data = await response.json();
@@ -15,5 +13,3 @@ async function getCategories() {
   //console.log(data2)
   return data2;
 }
-
-
