@@ -19,6 +19,7 @@ async function displayWorks(works) {
   async function displayCategories(categories) {
     const filter = document.querySelector(".filter");
     
+    
     categories.unshift({ name: "Tous", id: "0" });
     categories.forEach((category) => {
       const Element = document.createElement("p");

@@ -6,7 +6,6 @@ async function getWorks() {
   //  console.log(data)
   return data;
 }
-
 async function getCategories() {
   const response2 = await fetch("http://localhost:5678/api/categories");
   const data2 = await response2.json();
